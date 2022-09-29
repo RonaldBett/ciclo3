@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.ciclo3.repository;
 
-import com.usa.ciclo3.ciclo3.model.Cabin;
-import com.usa.ciclo3.ciclo3.repository.crud.CabinCrudRepository;
+import com.usa.ciclo3.ciclo3.model.Category;
+import com.usa.ciclo3.ciclo3.repository.crud.CategoryCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +16,21 @@ import org.springframework.stereotype.Repository;
  * @author 57311
  */
 @Repository
-public class CabinRepository {
+public class CategoryRepository {
     
     @Autowired
-    private CabinCrudRepository cabinCrudRepository;
+    private CategoryCrudRepository categoryCrudRepository;
     
-    public List<Cabin> getAll(){
-        return (List<Cabin>) cabinCrudRepository.findAll();
+    public List<Category> getAll(){
+        return (List<Category>) categoryCrudRepository.findAll();
     }
     
-    public Optional<Cabin> getCabin(int id){
-        return cabinCrudRepository.findById(id);
+    public Optional<Category> getCategory(int id){
+        return categoryCrudRepository.findById(id);
     }
     
-    public Cabin save(Cabin c){
-        return cabinCrudRepository.save(c);
+    public Category save(Category c){
+        return categoryCrudRepository.save(c);
     }
+    
 }
