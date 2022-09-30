@@ -6,12 +6,15 @@ package com.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -36,7 +39,14 @@ public class Cabin implements Serializable {
     private String name;
     private String description;
     
-
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
+    @JsonIgnoreProperties("cabin")
+    public  List<Reservation> reservations;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
+    @JsonIgnoreProperties("cabin")
+    public List<Message> messages;
+    
     public Integer getId() {
         return id;
     }
@@ -83,6 +93,22 @@ public class Cabin implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
     
