@@ -4,8 +4,8 @@
  */
 package com.usa.ciclo3.ciclo3.web;
 
-import com.usa.ciclo3.ciclo3.model.Cabin;
-import com.usa.ciclo3.ciclo3.service.CabinService;
+import com.usa.ciclo3.ciclo3.model.Admin;
+import com.usa.ciclo3.ciclo3.service.AdminService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,38 +27,38 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 57311
  */
 @RestController
-@RequestMapping("/api/Cabin")
+@RequestMapping("/api/Admin")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class CabinController {
+public class AdminController {
     
     @Autowired
-    private CabinService cabinService;
+    private AdminService adminService;
     
     @GetMapping("/all")
-    public List<Cabin> getCabins(){
-        return cabinService.getAll();
+    public List<Admin> getAdmins(){
+        return adminService.getAll();
     }
     
     @GetMapping("/{id}")
-    public Optional<Cabin> getCabin(@PathVariable("id") int id){
-        return cabinService.getCabin(id);
+    public Optional<Admin> getAdmin(@PathVariable("id") int id){
+        return adminService.getAdmin(id);
     }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cabin save(@RequestBody Cabin c){
-        return cabinService.save(c);
+    public Admin save(@RequestBody Admin a){
+        return adminService.save(a);
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cabin update(@RequestBody Cabin c){
-        return cabinService.update(c);
+    public Admin update(@RequestBody Admin a){
+        return adminService.update(a);
     }
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
-        return cabinService.delete(id);
+        return adminService.delete(id);
     }
 }

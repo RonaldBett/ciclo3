@@ -32,4 +32,8 @@ public class CabinRepository {
     public Cabin save(Cabin c){
         return cabinCrudRepository.save(c);
     }
+    
+    public void delete(Cabin c){
+        cabinCrudRepository.delete(c);
+    }
 }

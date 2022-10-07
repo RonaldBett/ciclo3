@@ -33,12 +33,45 @@ public class MessageService {
         if(m.getId()==null){
             return messageRepository.save(m);
         }else{
-            Optional<Message> caux = messageRepository.getMessage(m.getId());
-            if(caux.isEmpty()){
+            Optional<Message> maux = messageRepository.getMessage(m.getId());
+            if(maux.isEmpty()){
                 return messageRepository.save(m);
             }else{
                 return m;
             }
         }
+    }
+    
+    public Message update(Message m) {
+        if (m.getId() != null) {
+            Optional<Message> maux = messageRepository.getMessage(m.getId());
+            if (!maux.isEmpty()) {
+                if (m.getMessageText() != null) {
+                    maux.get().setMessageText(m.getMessageText());
+                }
+                if (m.getClient() != null) {
+                    maux.get().setClient(m.getClient());
+                }
+                if (m.getCabin() != null) {
+                    maux.get().setCabin(m.getCabin());
+                }
+                messageRepository.save(maux.get());
+                return maux.get();
+            } else {
+                return m;
+            }
+        } else {
+            return m;
+        }
+    }
+    
+    public boolean delete(int id){
+        Boolean mbool = false;
+        Optional<Message> c = messageRepository.getMessage(id);
+        if (c.isPresent()) {
+            messageRepository.delete(c.get());
+            mbool = true;
+        }
+        return mbool;
     }
 }
