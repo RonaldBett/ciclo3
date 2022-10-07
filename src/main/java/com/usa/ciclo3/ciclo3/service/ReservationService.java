@@ -30,10 +30,10 @@ public class ReservationService {
     }
     
     public Reservation save(Reservation r){
-        if(r.getId()==null){
+        if(r.getIdReservation()==null){
             return reservationRepository.save(r);
         }else{
-            Optional<Reservation> caux = reservationRepository.getReservation(r.getId());
+            Optional<Reservation> caux = reservationRepository.getReservation(r.getIdReservation());
             if(caux.isEmpty()){
                 return reservationRepository.save(r);
             }else{
@@ -43,8 +43,8 @@ public class ReservationService {
     }
     
     public Reservation update(Reservation r) {
-        if (r.getId() != null) {
-            Optional<Reservation> raux = reservationRepository.getReservation(r.getId());
+        if (r.getIdReservation()!= null) {
+            Optional<Reservation> raux = reservationRepository.getReservation(r.getIdReservation());
             if (!raux.isEmpty()) {
                 if (r.getStartDate() != null) {
                     raux.get().setStartDate(r.getStartDate());
@@ -52,12 +52,16 @@ public class ReservationService {
                 if (r.getDevolutionDate() != null) {
                     raux.get().setDevolutionDate(r.getDevolutionDate());
                 }
-                if (r.getClient() != null) {
-                    raux.get().setClient(r.getClient());
+                if (r.getStatus() != null) {
+                    raux.get().setStatus(r.getStatus());
                 }
                 if (r.getCabin() != null) {
                     raux.get().setCabin(r.getCabin());
                 }
+                if (r.getClient() != null) {
+                    raux.get().setClient(r.getClient());
+                }
+                
                 reservationRepository.save(raux.get());
                 return raux.get();
             } else {

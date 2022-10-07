@@ -46,21 +46,22 @@ public class CabinService {
         if (c.getId() != null) {
             Optional<Cabin> caux = cabinRepository.getCabin(c.getId());
             if (!caux.isEmpty()) {
+                if (c.getName() != null) {
+                    caux.get().setName(c.getName());
+                }
                 if (c.getBrand() != null) {
                     caux.get().setBrand(c.getBrand());
                 }
                 if (c.getRooms() != null) {
                     caux.get().setRooms(c.getRooms());
                 }
-                if (c.getCategory() != null) {
-                    caux.get().setCategory(c.getCategory());
-                }
-                if (c.getName() != null) {
-                    caux.get().setName(c.getName());
-                }
                 if (c.getDescription() != null) {
                     caux.get().setDescription(c.getDescription());
                 }
+                if (c.getCategory() != null) {
+                    caux.get().setCategory(c.getCategory());
+                }
+                
                 cabinRepository.save(caux.get());
                 return caux.get();
             } else {

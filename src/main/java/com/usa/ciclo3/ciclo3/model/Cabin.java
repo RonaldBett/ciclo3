@@ -28,24 +28,23 @@ public class Cabin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     private Integer rooms;
+    private String description;
     
     @ManyToOne
     @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("cabins")
     private Category category;
     
-    private String name;
-    private String description;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
+    @JsonIgnoreProperties("cabin")
+    public List<Message> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties("cabin")
     public  List<Reservation> reservations;
-    
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
-    @JsonIgnoreProperties("cabin")
-    public List<Message> messages;
     
     public Integer getId() {
         return id;
@@ -55,6 +54,14 @@ public class Cabin implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getBrand() {
         return brand;
     }
@@ -71,22 +78,6 @@ public class Cabin implements Serializable {
         this.rooms = rooms;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -94,15 +85,15 @@ public class Cabin implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public List<Reservation> getReservations() {
-        return reservations;
+    
+    public Category getCategory() {
+        return category;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setCategory(Category category) {
+        this.category = category;
     }
-
+    
     public List<Message> getMessages() {
         return messages;
     }
@@ -111,6 +102,11 @@ public class Cabin implements Serializable {
         this.messages = messages;
     }
 
-    
-    
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }  
 }

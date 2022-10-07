@@ -46,6 +46,9 @@ public class CategoryService {
         if (c.getId() != null) {
             Optional<Category> caux = categoryRepository.getCategory(c.getId());
             if (!caux.isEmpty()) {
+                if (c.getName() != null) {
+                    caux.get().setName(c.getName());
+                }
                 if (c.getDescription() != null) {
                     caux.get().setDescription(c.getDescription());
                 }
