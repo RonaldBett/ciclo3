@@ -1,7 +1,13 @@
 package com.usa.ciclo3.ciclo3.service;
 
 import com.usa.ciclo3.ciclo3.model.Reservation;
+import com.usa.ciclo3.ciclo3.model.custome.ReservationsByClient;
+import com.usa.ciclo3.ciclo3.model.custome.StatusReport;
 import com.usa.ciclo3.ciclo3.repository.ReservationRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,4 +80,31 @@ public class ReservationService {
         return rbool;
     }
     
+    public List<Reservation> getReservationsByDate(String firstDate, String lastDate){
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date fd = new Date();
+        Date ld = new Date();
+        try {
+            fd = parser.parse(firstDate);
+            ld = parser.parse(lastDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(fd.before(ld)){
+            return reservationRepository.getReservationsByDate(fd, ld);
+        }else{
+            return new ArrayList<>();
+        }
+    }
+    
+    public StatusReport getReservationsByStatus(){
+        List<Reservation> completed = reservationRepository.getReservationsByStatus("completed");
+        List<Reservation> cancelled = reservationRepository.getReservationsByStatus("cancelled");
+        
+        return new StatusReport(completed.size(), cancelled.size());
+    }
+    
+    public List<ReservationsByClient> getReservationsByClient(){
+        return reservationRepository.getReservationsByClient();
+    }
 }

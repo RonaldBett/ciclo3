@@ -1,6 +1,8 @@
 package com.usa.ciclo3.ciclo3.web;
 
 import com.usa.ciclo3.ciclo3.model.Reservation;
+import com.usa.ciclo3.ciclo3.model.custome.ReservationsByClient;
+import com.usa.ciclo3.ciclo3.model.custome.StatusReport;
 import com.usa.ciclo3.ciclo3.service.ReservationService;
 import java.util.List;
 import java.util.Optional;
@@ -52,5 +54,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return reservationService.delete(id);
+    }
+    
+    @GetMapping("/report-dates/{firstDate}/{lastDate}")
+    public List<Reservation> getReservationsByDate(@PathVariable("firstDate") String fd, @PathVariable("lastDate") String ld){
+        return reservationService.getReservationsByDate(fd, ld);
+    }
+    
+    @GetMapping("/report-status")
+    public StatusReport getReservationsByStatus(){
+        return reservationService.getReservationsByStatus();
+    }
+    
+    @GetMapping("/report-clients")
+    public List<ReservationsByClient> getReservationsByClient(){
+        return reservationService.getReservationsByClient();
     }
 }
