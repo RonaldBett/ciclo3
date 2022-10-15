@@ -3,12 +3,14 @@ package com.usa.ciclo3.ciclo3.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,6 +34,8 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
     
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy = "reservation")
+    @JsonIgnoreProperties("reservation")
     private Score score;
 
     public Integer getIdReservation() {
