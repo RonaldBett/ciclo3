@@ -211,7 +211,7 @@ function crearCardDetalle(datos){
     let card = `<div id = detalle_${datos.id} class = "card m-2" style = "width:18rem;">`
         card +=  "<div id = 'div_card_body' class = 'card-body'>"
         card +=    `<h5 class = 'card-title'>${datos.brand}</h5>`
-        card +=    `<h6 class = "card-subtitle mb-2 text-muted">Habitaciones: ${datos.id}</h6>`
+        card +=    `<h6 class = "card-subtitle mb-2 text-muted">Habitaciones: ${datos.rooms}</h6>`
         card +=    `<p class = "card-text">${datos.description}</p>`;
         card +=   `</div>
                  </div>`;
