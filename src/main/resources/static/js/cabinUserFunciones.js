@@ -65,10 +65,14 @@ function restPostMessage(datos) {
 }
 
 function crearCard(datos){
+    let catego = "";
+    if (datos.category != null && datos.category != undefined) {
+        catego = datos.category.name;
+    }
     let card = `<div id = ${datos.id} class = "card m-2" style = "width:18rem;">`
         card +=  "<div id = 'div_card_body' class = 'card-body'>"
         card +=    `<h5 id = 'card_title' class = "card-title">${datos.brand}</h5>`
-        card +=    `<h6 id = 'card_subtitle' class = "card-subtitle mb-2 text-muted">${datos.category.name}</h6>`
+        card +=    `<h6 id = 'card_subtitle' class = "card-subtitle mb-2 text-muted">${catego}</h6>`
         card +=    `<h6 id = 'card_subtitle_2' class = "card-subtitle mb-2 text-muted">Habitaciones: ${datos.rooms}</h6>`
         card +=    `<p  id = 'card_description' class = "card-text">${datos.description}</p>`;
         card +=    "<button class = 'btn btn-dark' onclick = 'funcionBotonMensaje(" + datos.id + ")'>Mensaje</button> &nbsp"

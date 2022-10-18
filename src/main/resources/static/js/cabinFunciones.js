@@ -98,8 +98,10 @@ function restDelete(id) {
 
 function crearCard(datos){
     let catego = "";
-    if (datos.category.name != null && datos.category.name != undefined) {
-        catego += datos.category.name;
+    if (datos.category != null && datos.category != undefined) {
+        if (datos.category.name != null && datos.category.name != undefined) {
+            catego += datos.category.name;
+        }
     }
     let card = `<div id = ${datos.id} class = "card m-2" style = "width:18rem;">`
         card +=  "<div id = 'div_card_body' class = 'card-body'>"
