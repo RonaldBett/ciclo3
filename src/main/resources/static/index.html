@@ -11,26 +11,67 @@
         <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a id = "nav_home" class="navbar-brand disabled" href="home.html" style="color: white; display:none">Home</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul id = "nav_elements" class="navbar-nav mr-auto" style="display:none">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cabinUser.html" style="color: white;">Alquiler de Cabañas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Administración</a>
+                        <div class="dropdown-menu">
+                            <a href="cabin.html" class="dropdown-item">Cabañas</a>
+                            <a href="category.html" class="dropdown-item">Categorías</a>
+                            <a href="client.html" class="dropdown-item">Clientes</a>
+                            <a href="message.html" class="dropdown-item">Mensajes</a>
+                            <a href="reservation.html" class="dropdown-item">Reservaciones</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <span id="user"></span>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
         <h1 class = "text-md-center m-4">Alquiler de cabañas</h1>
+
         <div class="container unauthenticated">
             <br> <br> <br>
-            <h4 class = "text-md-center m-4">Iniciar Sesión:</h4> <br>
+            <h4 class = "text-md-center m-4" style="color: white">Iniciar Sesión:</h4> <br>
             <div style="text-align:center">
-		<a class="btn btn-primary stretched-link" href="/oauth2/authorization/github">Log in</a> 
+                <a class="btn btn-primary btn-lg bg-dark" href="/oauth2/authorization/github">Log in</a> 
             </div>
         </div>
+
         <div class="container authenticated" style="display:none">
-            <h4 class = "text-md-center m-4"> Autenticado como:</h4> <br>
-            <span id="user"></span>
+            <h1 class = "text-md-center m-4">Bienvenido!</h1> <br><br>
+            <div class="row justify-content-md-center align-items-center">
+            <div class="glass" style="width:18rem;">
+                <a href = "cabinUser.html" style = 'text-decoration: none'>
+                    <div id='div_card_body' class='card-body' style="text-align: center">
+                        <br><h5 class='card-title' style="color: white">Alquilar Cabaña</h5>
+                    </div>
+                </a>
+            </div>
+            </div>
         </div>
+
+
         <script type="text/javascript">
             $.get("/user", function (data) {
                 $("#user").html(data.name);
                 $(".unauthenticated").hide();
                 $(".authenticated").show();
+                $("#nav_home").show();
+                $("#nav_elements").show();
             });
         </script>
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang = "es">
+
+<head>
+  <title>Admin Categorías</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="description" content="Reto #4 ciclo3 MisionTIC 2022"/>
+  <base href="/"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/categoryFunciones.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+
+<body onload="restGet();" >
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <a class="navbar-brand" href="home.html" style="color: white;">Home</a>
+     
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="cabinUser.html" style="color: white;">Alquiler de Cabañas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: white;">Administración</a>
+          <div class="dropdown-menu">
+              <a href="cabin.html" class="dropdown-item">Cabañas</a>
+              <a href="client.html" class="dropdown-item">Clientes</a>
+              <a href="message.html" class="dropdown-item">Mensajes</a>
+              <a href="reservation.html" class="dropdown-item">Reservaciones</a>
+              <div class="dropdown-divider"></div>
+              <a href="#"class="dropdown-item disabled">Categorías</a>
+          </div>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 class="text-md-center m-4">Administrar Categorías</h1>
+
+  <div id="div_items">
+    <div class='container'>
+      <div id=div_rows_items class='row'></div>
+    </div>
+  </div>
+
+  <div style= "text-align: center;">
+    <button id="botonAgregarItem" class = "btn btn-dark" onclick="mostrarDivAdd()"> Agregar Categoría </button>
+  </div>
+  <div id="div_overlay" class="overlay" style="display:none">
+    <div class="popup">
+      <div id="div_add_act" class="form-group container text-centes">
+        <div id="div_agregar_titulo" style="text-align: center;"></div>
+        <input class="form-control m-3" style="width: 18em;" type="text" id="field_name" placeholder="Nombre">
+        <input class="form-control m-3" style="width: 18em;" type="text" id="field_description" placeholder="Descripción">
+        <div id="div_botones" style="text-align: center;">
+          <button class="btn btn-dark m-3" id="botonCancelar" onclick="mostrarOcultarDivAddAct()"> Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="div_overlay_2" class="overlay" style="display:none">
+    <div class="popup">
+      <div id="div_detalle" class="form-group container text-centes">
+        <div id="div_titulo_popup2" style="text-align: center;"><h2>Cabañas</h2></div>
+        <div id="div_items_detalle">
+          <div class='container'>
+            <div id=div_rows_items_detalle class='row'></div>
+          </div>
+        </div>
+        <button class="btn btn-dark m-3" id="botonCancelar" onclick="ocultarDivDetalle()"> Cerrar </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

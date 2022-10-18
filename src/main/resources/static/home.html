@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang = "es">
+
+<head>
+    <title>Admin Reservaciones</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Reto #4 ciclo3 MisionTIC 2022"/>
+    <base href="/"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <a class="navbar-brand disabled" href="home.html" style="color: white;">Home</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="cabinUser.html" style="color: white;">Alquiler de Cabañas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        style="color: white;">Administración</a>
+                    <div class="dropdown-menu">
+                        <a href="cabin.html" class="dropdown-item">Cabañas</a>
+                        <a href="category.html" class="dropdown-item">Categorías</a>
+                        <a href="client.html" class="dropdown-item">Clientes</a>
+                        <a href="message.html" class="dropdown-item">Mensajes</a>
+                        <a href="reservation.html" class="dropdown-item">Reservaciones</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <a href="cabinUser.html" style='text-decoration: none'>
+        <header>
+            <section>
+                <h1>Alquiler de Cabañas</h1>
+            </section>
+            <div id="div_items">
+                <div class='container'>
+                    <div class='row'>
+                        <div class="glass" style="width:18rem;">
+                            <a href = "cabin.html" style = 'text-decoration: none'>
+                                <div id='div_card_body' class='card-body'>
+                                    <br><br><h5 class='card-title' style="color: white">Administrar Cabañas</h5>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="glass" style="width:18rem;">
+                            <a href="category.html" style='text-decoration: none'>
+                                <div id='div_card_body' class='card-body'>
+                                    <br><br><h5 class='card-title' style="color: white;">Administrar Categorías</h5>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="glass" style="width:18rem;">
+                            <a href="client.html" style='text-decoration: none'>
+                                <div id='div_card_body' class='card-body'>
+                                    <br><br><h5 class='card-title' style="color: white;">Administrar Clientes</h5>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="glass" style="width:18rem;">
+                            <a href="reservation.html" style='text-decoration: none'>
+                                <div id='div_card_body' class='card-body'>
+                                    <br><h5 class='card-title' style="color: white;">Administrar Reservaciones</h5>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="glass" style="width:18rem;">
+                            <a href="message.html" style='text-decoration: none'>
+                                <div id='div_card_body' class='card-body'>
+                                    <br><br><h5 class='card-title' style="color: white;">Administrar Mensajes</h5>
+                                </div>
+                            </a>
+                        </div>
+
+                    
+                    </div>
+                </div>
+            </div>
+        </header>
+    </a>
+
+
+</body>
+
+</html>
